@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importación de CSS puro: usa @import */
+@import './tailwind.css';
+@import 'primeicons/primeicons.css';
+
+@import './assets/layout/layout.scss';
+/* @import './assets/demo/demo.scss'; */
+/* @import './assets/' */

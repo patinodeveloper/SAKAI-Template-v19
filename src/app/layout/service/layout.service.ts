@@ -1,5 +1,7 @@
 import { Injectable, effect, signal, computed } from '@angular/core';
+import { usePreset } from '@primeng/themes';
 import { Subject } from 'rxjs';
+import MyPreset from '../config/mypreset';
 
 export interface layoutConfig {
     preset?: string;
@@ -175,4 +177,55 @@ export class LayoutService {
     reset() {
         this.resetSource.next(true);
     }
+
+    /**
+     * Resetea la configuracion del tema
+     */
+    resetToDefaults(): void {
+        const conf = {
+            preset: 'Aura',
+            primary: 'rose',
+            surface: null,
+            darkTheme: true,
+            menuMode: 'static',
+        };
+        // this.changePrimaryColor();
+        // this.changeSurfaceColor();
+        usePreset(MyPreset);
+
+        this.layoutConfig.set(conf);
+    }
+    
+//   changePrimaryColor() {
+//     updatePrimaryPalette({
+//       50: '{rose.50}',
+//       100: '{rose.100}',
+//       200: '{rose.200}',
+//       300: '{rose.300}',
+//       400: '{rose.400}',
+//       500: '{rose.500}',
+//       600: '{rose.600}',
+//       700: '{rose.700}',
+//       800: '{rose.800}',
+//       900: '{rose.900}',
+//       950: '{rose.950}',
+//     });
+//   }
+
+//   changeSurfaceColor() {
+//     updateSurfacePalette({
+//       0: '#ffffff',
+//       50: '#fafafa',
+//       100: '#f4f4f5',
+//       200: '#e4e4e7',
+//       300: '#d4d4d8',
+//       400: '#a1a1aa',
+//       500: '#71717a',
+//       600: '#52525b',
+//       700: '#3f3f46',
+//       800: '#27272a',
+//       900: '#18181b',
+//       950: '#09090b',
+//     });
+//   }
 }
